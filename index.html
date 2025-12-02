@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Group Randomization</title>
+    <style>
+        /* 简单的样式，确保在重定向前用户能看到一些提示 */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: auto;
+        }
+        h1 {
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>正在准备问卷中...</h1>
+    <p>请稍等。正在随机分配问卷。</p>
+    <script>
+        // *** 1. 定义您的 8 个 Google Forms 链接 ***
+        // 请将占位符替换为您实际的 Google Forms 链接
+        const forms = [
+            'https://forms.gle/yN25wRFcy6VnjJ5S6', // ❶ 准（L）多（L）新（L）
+            'https://forms.gle/9iYnwcijgGQyiywCA', // ❷ 准（L）多（L）新（H）
+            'https://forms.gle/mqxj9gENrLBJW3W69', // ❸ 准（L）多（H）新（L） 
+            'https://forms.gle/84fqguGG9pdfworVA', // ❹ 准（L）多（H）新（H）
+            'https://forms.gle/7bKDYMw67NPmyLcx6', // ❺ 准（H）多（L）新（L）
+            'https://forms.gle/i6MJiXh4GYMwZGq87', // ❻ 准（H）多（L）新（H）
+            'https://forms.gle/WJqH3VmLmehWhtPx9', // ❼ 准（H）多（H）新（L）
+            'https://forms.gle/L1Rv77dETtkzmYwG7', // ❽ 准（H）多（H）新（H）
+        ];
+
+        // *** 2. 随机生成一个数字，作为数组的索引 ***
+        // Math.random() 生成 0 (包含) 到 1 (不包含) 之间的浮点数
+        // 乘以 8 得到 0 到 7.999...
+        // Math.floor() 向下取整，得到 0 到 7 的整数
+        const randomIndex = Math.floor(Math.random() * forms.length); 
+
+        // 3. 获取对应的 Google Forms 链接
+        const targetUrl = forms[randomIndex];
+
+        // 4. (可选) 打印分配结果到控制台 (仅供调试)
+        console.log(`随机分配的分组索引 (0-7): ${randomIndex}`);
+        console.log(`重定向到链接: ${targetUrl}`);
+        
+        // 5. 将用户重定向到目标链接
+        window.location.replace(targetUrl); 
+
+    </script>
+</div>
+
+</body>
+</html>
